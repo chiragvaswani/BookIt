@@ -1,0 +1,19 @@
+{
+  "name": "bookit",
+  "version": "1.0.0",
+  "description": "This package can be used to initialise a booking system in the application that uses it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiragvaswani/BookIt.git"
+  },
+  "author": "Chirag Vaswani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chiragvaswani/BookIt/issues"
+  },
+  "homepage": "https://github.com/chiragvaswani/BookIt#readme"
+}
