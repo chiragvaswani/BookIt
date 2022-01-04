@@ -12,11 +12,14 @@ async function createBooking(username, date, courtName, slot, cost) {
       slot,
       cost
     );
+    if (save === -1) {
+      console.error("Error saving the booking");
+      return;
+    }
   } else {
     console.log("Entered court does not exist");
     return;
   }
-  if (save === -1) console.error("Error saving the booking");
   console.log("Booking saved successfully.");
 }
 
@@ -26,7 +29,7 @@ async function findCourt(courtName) {
 
 async function saveBooking(username, date, courtName, email, slot, cost) {
   try {
-    await booking.save({
+    await booking.findOneAndUpdate({
       username,
       date,
       courtName,
