@@ -6,12 +6,10 @@ const Slots = new Schema({
   startTime: {
     hours: Number,
     minutes: Number,
-    required: true,
   },
   endTime: {
     hours: Number,
     minutes: Number,
-    required: true,
   },
 });
 
