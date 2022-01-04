@@ -8,7 +8,7 @@ const bookingSchema = new Schema({
   date: { type: String, required: true },
   courtName: { type: String, required: true },
   ownerUsername: { type: String, required: true },
-  slot: { type: Slots, required: true },
+  slot: { type: Number, required: true },
   cost: { type: Number, required: true },
 });
 
