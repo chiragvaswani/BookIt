@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/chiragvaswani/BookIt/issues"
   },
-  "homepage": "https://github.com/chiragvaswani/BookIt#readme"
+  "homepage": "https://github.com/chiragvaswani/BookIt#readme",
+  "dependencies": {
+    "mongoose": "^6.1.4"
+  }
 }
