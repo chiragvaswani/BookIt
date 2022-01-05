@@ -4,12 +4,12 @@ const { Schema } = mongoose;
 const Slots = require("./slots.mongo.js");
 
 const bookingSchema = new Schema({
-  username: { type: String, required: true },
-  date: { type: String, required: true },
-  courtName: { type: String, required: true },
-  ownerUsername: { type: String, required: true },
-  slot: { type: Number, required: true },
-  cost: { type: Number, required: true },
+  username: { type: String },
+  date: { type: String },
+  courtName: { type: String },
+  email: { type: String },
+  slot: { type: Number },
+  cost: { type: Number },
 });
 
 module.exports = mongoose.model("booking", bookingSchema);
