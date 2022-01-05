@@ -4,6 +4,7 @@ const { findCourt } = require("./court.model");
 // Returns 1 if the booking was made. -1 otherwise
 async function createBooking(username, date, courtName, slot, cost) {
   court = await findCourt(courtName);
+  console.log(court);
   if (await isBooked(date, courtName, slot)) {
     console.error("The slot is unavailable.");
     return -1;
