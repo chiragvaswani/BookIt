@@ -9,9 +9,10 @@ async function findCourt(courtName) {
 // Returns 1 if the court was created. -1 otherwise
 async function createCourt(name, email, slots) {
   try {
-    const user = userDatabase.findOne({
+    const user = await userDatabase.findOne({
       username: email,
     });
+    console.log(user);
     if (!user.isOwner)
       throw "The current user is not a court owner and hence cannot register a court.";
     const existingCourt = await findCourt(name);
