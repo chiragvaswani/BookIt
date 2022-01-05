@@ -1,15 +1,17 @@
 const booking = require("./booking.mongo");
 const { findCourt } = require("./court.model");
+const { findUser } = require("./user.model");
 
 // Returns 1 if the booking was made. -1 otherwise
 async function createBooking(username, date, courtName, slot, cost) {
   court = await findCourt(courtName);
+  user = await findUser(username);
   console.log(court);
   if (await isBooked(date, courtName, slot)) {
     console.error("The slot is unavailable.");
     return -1;
   }
-  if (court) {
+  if (court && user) {
     const save = await saveBooking(
       username,
       date,
@@ -19,7 +21,7 @@ async function createBooking(username, date, courtName, slot, cost) {
       cost
     );
     if (save === -1) {
-      console.error("Error saving the booking/");
+      console.error("Error saving the booking");
       return;
     } else {
       console.log("The booking was made successfully.");
