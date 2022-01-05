@@ -11,6 +11,10 @@ const courtSchema = new Schema({
     type: String,
     required: true,
   },
+  slots: {
+    type: [Number],
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Courts", courtSchema);
