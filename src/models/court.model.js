@@ -29,7 +29,7 @@ async function createCourt(name, email, slots) {
 async function getCourtBookings(courtName, email) {
   const court = await findCourt(courtName);
   if (court && court.email === email) {
-    return await booking.findOne({
+    return await booking.find({
       courtName: courtName,
     });
   } else {
