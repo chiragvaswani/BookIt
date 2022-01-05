@@ -44,6 +44,7 @@ async function signInUser(username, password) {
 }
 
 module.exports = {
+  findUser,
   signUpUser,
   signInUser,
 };
