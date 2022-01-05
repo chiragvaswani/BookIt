@@ -21,4 +21,6 @@ module.exports = {
   createCourt,
   getCourtBookings,
   findCourt,
+  signInUser,
+  signUpUser,
 };
