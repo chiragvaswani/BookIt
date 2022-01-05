@@ -96,7 +96,15 @@ async function cancelBooking(username, date, courtName, slot) {
   }
 }
 
+async function getUserBookings(username) {
+  const userBookings = await booking.find({
+    username: username,
+  });
+  return userBookings;
+}
+
 module.exports = {
   createBooking,
   cancelBooking,
+  getUserBookings,
 };
