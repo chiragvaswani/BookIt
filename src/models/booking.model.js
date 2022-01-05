@@ -1,5 +1,5 @@
 const booking = require("./booking.mongo");
-const courtsDatabase = require("./court.mongo");
+const { findCourt } = require("./court.model");
 
 // Returns 1 if the booking was made. -1 otherwise
 async function createBooking(username, date, courtName, slot, cost) {
@@ -28,10 +28,6 @@ async function createBooking(username, date, courtName, slot, cost) {
     console.log("Entered court does not exist");
     return;
   }
-}
-
-async function findCourt(courtName) {
-  return await courtsDatabase.findOne({ courtName });
 }
 
 async function isBooked(date, courtName, slot) {
