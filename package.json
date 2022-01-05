@@ -1,5 +1,5 @@
 {
-  "name": "bookit",
+  "name": "booking-it",
   "version": "1.0.0",
   "description": "This package can be used to initialise a booking system in the application that uses it",
   "main": "index.js",
