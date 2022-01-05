@@ -62,7 +62,31 @@ async function saveBooking(username, date, courtName, email, slot, cost) {
 }
 
 // Cancels the booking. Returns 1 if cancellation was successful. 0 otherwise
-async function cancelBooking(username, date, courtName, slot) {}
+async function cancelBooking(username, date, courtName, slot) {
+  if (!isBooked(date, courtName, slot)) {
+    console.log("The slot is not booked");
+    return 1;
+  } else {
+    const bookedSlot = await getBooking(date, courtName, slot);
+    if (bookedSlot.username !== username) {
+      console.log("The current user cannot cancel that booking.");
+      return -1;
+    } else {
+      try {
+        await booking.findOneAndRemove({
+          username: username,
+          date: date,
+          courtName: courtName,
+          slot: slot,
+        });
+        return 1;
+      } catch (err) {
+        console.error(err);
+        return -1;
+      }
+    }
+  }
+}
 
 module.exports = {
   createBooking,
