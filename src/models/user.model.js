@@ -4,9 +4,8 @@ const userDatabase = require("./user.mongo");
 // For user sign up
 async function signUpUser(username, password, isOwner) {
   if (!((await findUser(username)) === null)) {
-    return res.status(406).json({
-      error: "Username already exists",
-    });
+    console.error("Username is taken.");
+    return -1;
   }
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -24,7 +23,7 @@ async function signUpUser(username, password, isOwner) {
 }
 
 async function findUser(username) {
-  return await userDatabase.findOne(username);
+  return await userDatabase.findOne({ username: username });
 }
 
 async function createUser(data) {
@@ -35,9 +34,16 @@ async function createUser(data) {
 // For user sign in
 async function signInUser(username, password) {
   const user = await findUser(username);
-  if (password === user.password) return user;
-  else {
+  if (await bcrypt.compare(password, user.password)) {
+    console.log(user);
+    return user;
+  } else {
     console.error("Invalid password");
     return -1;
   }
 }
+
+module.exports = {
+  signUpUser,
+  signInUser,
+};
