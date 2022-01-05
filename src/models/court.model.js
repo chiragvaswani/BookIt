@@ -3,7 +3,7 @@ const booking = require("./booking.mongo");
 const userDatabase = require("./user.mongo");
 
 async function findCourt(courtName) {
-  return await courtsDatabase.findOne({ courtName });
+  return await courtsDatabase.findOne({ name: courtName });
 }
 
 // Returns 1 if the court was created. -1 otherwise
