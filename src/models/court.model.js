@@ -1,5 +1,6 @@
 const courtsDatabase = require("./court.mongo");
 const booking = require("./booking.mongo");
+const userDatabase = require("./user.mongo");
 
 async function findCourt(courtName) {
   return await courtsDatabase.findOne({ courtName });
@@ -8,6 +9,11 @@ async function findCourt(courtName) {
 // Returns 1 if the court was created. -1 otherwise
 async function createCourt(name, email, slots) {
   try {
+    const user = userDatabase.findOne({
+      username: email,
+    });
+    if (!user.isOwner)
+      throw "The current user is not a court owner and hence cannot register a court.";
     const existingCourt = await findCourt(name);
     if (existingCourt) throw "Court with this name already exists.";
     courtDetails = await new courtsDatabase({ name, email, slots });
