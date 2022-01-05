@@ -8,12 +8,14 @@ async function findCourt(courtName) {
 // Returns 1 if the court was created. -1 otherwise
 async function createCourt(name, email, slots) {
   try {
+    const existingCourt = await findCourt(name);
+    if (existingCourt) throw "Court with this name already exists.";
     courtDetails = await new courtsDatabase({ name, email, slots });
     await courtDetails.save();
     console.log("Court " + courtDetails + " saved successfully.");
     return 1;
   } catch (err) {
-    console.err(err);
+    console.error(err);
     return -1;
   }
 }
