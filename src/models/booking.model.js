@@ -4,7 +4,7 @@ const courtsDatabase = require("./court.mongo");
 // Returns 1 if the booking was made. -1 otherwise
 async function createBooking(username, date, courtName, slot, cost) {
   court = await findCourt(courtName);
-  if (isBooked(date, courtName, slot)) {
+  if (await isBooked(date, courtName, slot)) {
     console.error("The slot is unavailable.");
     return -1;
   }
@@ -40,6 +40,8 @@ async function isBooked(date, courtName, slot) {
     courtName: courtName,
     slot: slot,
   });
+  console.log(res.length);
+  return res.length > 0;
 }
 
 async function saveBooking(username, date, courtName, email, slot, cost) {
@@ -58,6 +60,9 @@ async function saveBooking(username, date, courtName, email, slot, cost) {
     return -1;
   }
 }
+
+// Cancels the booking. Returns 1 if cancellation was successful. 0 otherwise
+async function cancelBooking(username, date, courtName, slot) {}
 
 module.exports = {
   createBooking,
