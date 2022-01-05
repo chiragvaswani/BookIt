@@ -11,6 +11,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  isOwner: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("user", userSchema);
