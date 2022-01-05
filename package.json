@@ -17,8 +17,7 @@
   },
   "homepage": "https://github.com/chiragvaswani/BookIt#readme",
   "dependencies": {
-    "mongoose": "^6.1.4",
-    "passport": "^0.5.2",
-    "passport-google-oauth20": "^2.0.0"
+    "bcrypt": "^5.0.1",
+    "mongoose": "^6.1.4"
   }
 }
