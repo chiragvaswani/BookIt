@@ -34,7 +34,7 @@ async function createUser(data) {
 // For user sign in
 async function signInUser(username, password) {
   const user = await findUser(username);
-  if (await bcrypt.compare(password, user.password)) {
+  if (user && (await bcrypt.compare(password, user.password))) {
     console.log(user);
     return user;
   } else {
