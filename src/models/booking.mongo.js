@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const Slots = require("./slots.mongo.js");
-
 const bookingSchema = new Schema({
   username: { type: String },
   date: { type: String },
