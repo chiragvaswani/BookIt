@@ -27,7 +27,7 @@ async function createBooking(username, date, courtName, slot, cost) {
     }
   } else {
     console.log("Entered court does not exist");
-    return;
+    return -1;
   }
 }
 
