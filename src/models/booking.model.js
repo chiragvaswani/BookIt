@@ -13,7 +13,7 @@ async function createBooking(username, date, courtName, slot, cost) {
       username,
       date,
       courtName,
-      "abc@xyz.com",
+      court.email,
       slot,
       cost
     );
