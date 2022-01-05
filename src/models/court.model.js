@@ -1,4 +1,5 @@
 const courtsDatabase = require("./court.mongo");
+const booking = require("./booking.mongo");
 
 async function findCourt(courtName) {
   return await courtsDatabase.findOne({ courtName });
@@ -17,7 +18,23 @@ async function createCourt(name, email, slots) {
   }
 }
 
+async function getCourtBookings(courtName, email) {
+  const court = await findCourt(courtName);
+  if (court && court.email === email) {
+    return await booking.findOne({
+      courtName: courtName,
+    });
+  } else {
+    const message = court
+      ? "The given user does not have enough access."
+      : "The court does not exist";
+    console.error(message);
+    return -1;
+  }
+}
+
 module.exports = {
   findCourt,
   createCourt,
+  getCourtBookings,
 };
